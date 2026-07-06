@@ -72,10 +72,12 @@
 - [x] Sonde Playwright ciblée : préloader → hero posé (wordmark + lead serif)
       → menu ouvert (blur + stagger) → crossfade Soirée 04/05 → footer.
       Marquee unique à y=900 = pile sous le hero. 0 erreur console.
-- [ ] Lighthouse mobile ≥ 95 — à mesurer sur URL déployée (PSI), pas mesurable
-      en local headless ici
-- [ ] Déployer Vercel production — **gated sur « go » founder** (push master =
-      auto-deploy). Commit local prêt.
+- [ ] Lighthouse mobile ≥ 95 — à mesurer sur https://vtc-sigma.vercel.app (PSI)
+- [x] Déployé Vercel production (06/07, « go » founder) — merge avec la passe
+      wizard id-a2 (wizard 5 étapes + autocomplete + popover mail + FAQ
+      accordéon préservés sous la couche spectacle). Push `0e83bab`, live à
+      t+20 s, QA harnais sur la prod : 0 erreur console, 0 overflow,
+      desktop+mobile × normal+reduced.
 
 ## Revue de la passe
 - Site statique → couche spectacle complète : préloader, intro hero chorégraphiée,

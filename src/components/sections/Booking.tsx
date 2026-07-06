@@ -395,7 +395,7 @@ export default function Booking() {
               </div>
 
               <div className="vtc-flow__actions">
-                <button className="btn btn--secondary btn--rotation" type="button" onClick={goToPreviousStep} disabled={currentStep === 0}>
+                <button className="btn btn--secondary btn--rotation btn--roll-left" type="button" onClick={goToPreviousStep} disabled={currentStep === 0}>
                   <span className="btn__content">
                     <span className="btn__icon">
                       <ArrowLeft size={18} />

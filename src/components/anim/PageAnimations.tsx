@@ -54,6 +54,15 @@ export default function PageAnimations() {
           const cue = hero.querySelector<HTMLElement>("[data-hero='cue']");
 
           const intro = gsap.timeline({ paused: true, defaults: { ease: EASE_OUT } });
+          const nav = document.querySelector<HTMLElement>(".vtc-nav");
+          if (nav) {
+            intro.fromTo(
+              nav,
+              { yPercent: -120 },
+              { yPercent: 0, duration: 1.3, ease: "expo.out" },
+              0.35,
+            );
+          }
           if (image) {
             intro.fromTo(
               image,

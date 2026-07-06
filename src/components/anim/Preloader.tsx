@@ -49,10 +49,12 @@ export default function Preloader() {
       const kicker = root.querySelector("[data-pre-kicker]");
       const brandLines = root.querySelectorAll(".u-mask > span");
       const line = root.querySelector("[data-pre-line]");
+      const progress = root.querySelector("[data-pre-progress]");
       const inner = root.querySelector(".vtc-preloader__inner");
 
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-      tl.fromTo(kicker, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.15)
+      tl.fromTo(progress, { scaleX: 0 }, { scaleX: 1, duration: 1.6, ease: "power2.inOut" }, 0.1)
+        .fromTo(kicker, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.15)
         .fromTo(
           brandLines,
           { yPercent: 118 },
@@ -75,6 +77,7 @@ export default function Preloader() {
 
   return (
     <div className="vtc-preloader" ref={rootRef} aria-hidden="true">
+      <span className="vtc-preloader__progress" data-pre-progress />
       <div className="vtc-preloader__inner">
         <p className="vtc-preloader__kicker" data-pre-kicker>
           Chauffeur privé — Toulouse

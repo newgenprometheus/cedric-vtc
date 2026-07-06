@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Copy, Mail, Menu, X } from "lucide-react";
+import { ArrowUpRight, Copy, Mail } from "lucide-react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import Magnetic from "@/components/anim/Magnetic";
 import { NAV_ITEMS, SITE } from "@/lib/constants";
@@ -135,7 +135,12 @@ export default function Navbar() {
                 aria-controls="menu"
               >
                 <span className="btn__content">
-                  <span className="btn__icon">{isOpen ? <X size={20} /> : <Menu size={22} />}</span>
+                  <span className="btn__icon">
+                    <span className={`vtc-burger ${isOpen ? "is-open" : ""}`} aria-hidden="true">
+                      <span />
+                      <span />
+                    </span>
+                  </span>
                 </span>
               </button>
 

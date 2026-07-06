@@ -2,10 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+type GalleryDir = "prev" | "next" | null;
 
 export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [gallery, setGallery] = useState<GalleryDir>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(true); // Default true to prevent SSR mismatch/flash
 
   const mouseX = useMotionValue(-100);
@@ -21,7 +25,7 @@ export default function CustomCursor() {
       const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
       setIsTouchDevice(hasTouch);
     };
-    
+
     checkTouchDevice();
 
     if (isTouchDevice) return;
@@ -30,6 +34,17 @@ export default function CustomCursor() {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
+
+      // Curseur contextuel galerie (cursor--arrow Aircenter) : chip ‹ › selon
+      // la moitié survolée d'un [data-cursor-gallery]
+      const target = e.target as HTMLElement;
+      const galleryEl = target.closest?.("[data-cursor-gallery]");
+      if (galleryEl) {
+        const rect = galleryEl.getBoundingClientRect();
+        setGallery(e.clientX < rect.left + rect.width / 2 ? "prev" : "next");
+      } else {
+        setGallery(null);
+      }
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -79,12 +94,26 @@ export default function CustomCursor() {
           y: cursorY,
         }}
         animate={{
-          scale: isHovered ? 1.5 : 1,
-          backgroundColor: isHovered ? "rgba(214, 192, 141, 0.1)" : "rgba(255, 255, 255, 0)",
-          borderColor: isHovered ? "rgba(214, 192, 141, 0.85)" : "rgba(255, 255, 255, 0.3)",
+          scale: gallery ? 1.7 : isHovered ? 1.5 : 1,
+          backgroundColor: gallery
+            ? "rgba(8, 8, 8, 0.55)"
+            : isHovered
+              ? "rgba(214, 192, 141, 0.1)"
+              : "rgba(255, 255, 255, 0)",
+          borderColor:
+            gallery || isHovered ? "rgba(214, 192, 141, 0.85)" : "rgba(255, 255, 255, 0.3)",
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      />
+      >
+        <motion.span
+          className="vtc-cursor-chip"
+          animate={{ opacity: gallery ? 1 : 0, scale: gallery ? 1 : 0.5 }}
+          transition={{ duration: 0.2 }}
+          aria-hidden="true"
+        >
+          {gallery === "prev" ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
+        </motion.span>
+      </motion.div>
       {/* Inner Dot */}
       <motion.div
         style={{
@@ -103,7 +132,7 @@ export default function CustomCursor() {
           y: cursorY,
         }}
         animate={{
-          scale: isHovered ? 0 : 1,
+          scale: isHovered || gallery ? 0 : 1,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       />

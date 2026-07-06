@@ -57,7 +57,7 @@ export default function Hero() {
               </a>
             </Magnetic>
             <Magnetic>
-              <a className="btn btn--secondary btn--rotation" href="#services">
+              <a className="btn btn--secondary btn--rotation btn--roll-down" href="#services">
                 <span className="btn__content">
                   <span className="btn__text">Voir les services</span>
                   <span className="btn__icon">

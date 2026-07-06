@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { ArrowUpRight, LockKeyhole, Mail } from "lucide-react";
+import Magnetic from "@/components/anim/Magnetic";
 import { BOOKING_STEPS, BOOKING_VEHICLES, SERVICE_ITEMS, SITE } from "@/lib/constants";
 
 const initialFormData = {
@@ -67,14 +68,16 @@ export default function Booking() {
       <div className="container-h vtc-booking__grid">
         <div className="vtc-booking__intro">
           <p className="vtc-section-kicker">Réservation</p>
-          <h2 id="booking-title">Demande de trajet</h2>
-          <p>
+          <h2 id="booking-title" data-split>
+            Demande de <em className="serif">trajet</em>
+          </h2>
+          <p data-reveal>
             Décrivez le trajet. Cédric confirme ensuite la disponibilité, le tarif et le point de rendez-vous. Aucun faux numéro, aucune plateforme opaque.
           </p>
 
-          <ol className="vtc-booking__steps">
+          <ol className="vtc-booking__steps" data-reveal-group>
             {BOOKING_STEPS.map((step, index) => (
-              <li key={step.title}>
+              <li key={step.title} data-reveal-item>
                 <span>{index + 1}</span>
                 <div>
                   <strong>{step.title}</strong>
@@ -85,7 +88,7 @@ export default function Booking() {
           </ol>
         </div>
 
-        <div className="vtc-booking__panel">
+        <div className="vtc-booking__panel" data-reveal>
           {isSubmitted ? (
             <div className="vtc-booking__success">
               <Mail size={28} />
@@ -198,14 +201,16 @@ export default function Booking() {
                 </p>
               </div>
 
-              <button className="btn btn--primary btn--rotation btn--full vtc-submit" type="submit">
-                <span className="btn__content">
-                  <span className="btn__text">Préparer la demande</span>
-                  <span className="btn__icon">
-                    <ArrowUpRight size={18} />
+              <Magnetic strength={8}>
+                <button className="btn btn--primary btn--rotation btn--full vtc-submit" type="submit">
+                  <span className="btn__content">
+                    <span className="btn__text">Préparer la demande</span>
+                    <span className="btn__icon">
+                      <ArrowUpRight size={18} />
+                    </span>
                   </span>
-                </span>
-              </button>
+                </button>
+              </Magnetic>
             </form>
           )}
         </div>

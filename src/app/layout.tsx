@@ -17,6 +17,16 @@ const geistMono = localFont({
   preload: true,
 });
 
+const cormorant = localFont({
+  src: [
+    { path: "./fonts/cormorant.woff2", weight: "300 700", style: "normal" },
+    { path: "./fonts/cormorant-italic.woff2", weight: "300 700", style: "italic" },
+  ],
+  variable: "--font-cormorant",
+  display: "swap",
+  preload: true,
+});
+
 export const metadata: Metadata = {
   title: "Cédric VTC | Chauffeur privé à Toulouse",
   description:
@@ -53,8 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      style={{ scrollBehavior: "smooth" }}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" style={{ margin: 0, padding: 0 }}>
         {children}

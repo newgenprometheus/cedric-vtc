@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
+import Marquee from "@/components/sections/Marquee";
 import Services from "@/components/sections/Services";
 import Fleet from "@/components/sections/Fleet";
 import TravelTimes from "@/components/sections/TravelTimes";
@@ -9,6 +10,9 @@ import Harmony from "@/components/sections/Harmony";
 import Booking from "@/components/sections/Booking";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
+import Preloader from "@/components/anim/Preloader";
+import SmoothScroll from "@/components/anim/SmoothScroll";
+import PageAnimations from "@/components/anim/PageAnimations";
 import { SITE } from "@/lib/constants";
 
 const localBusinessJsonLd = {
@@ -31,7 +35,9 @@ const localBusinessJsonLd = {
 export default function Home() {
   return (
     <>
+      <Preloader />
       <CustomCursor />
+      <SmoothScroll />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
@@ -43,6 +49,7 @@ export default function Home() {
           <div className="page-content js-page-content">
             <main id="top" className="page-content__overflow-fix">
               <Hero />
+              <Marquee />
               <Booking />
               <Services />
               <Fleet />
@@ -53,6 +60,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <PageAnimations />
     </>
   );
 }

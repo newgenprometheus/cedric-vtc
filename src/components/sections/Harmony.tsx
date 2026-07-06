@@ -27,16 +27,18 @@ export default function Harmony() {
       <div className="container-h vtc-faq__grid">
         <div>
           <p className="vtc-section-kicker">À propos</p>
-          <h2 id="faq-title">Service direct, sans plateforme opaque</h2>
-          <p className="vtc-faq__lead">
+          <h2 id="faq-title" data-split>
+            Service direct, <em className="serif">sans plateforme opaque</em>
+          </h2>
+          <p className="vtc-faq__lead" data-reveal>
             Vous envoyez le trajet, Cédric confirme la faisabilité, l&apos;horaire et le tarif. Une réservation claire vaut mieux qu&apos;une promesse automatique.
           </p>
 
-          <div className="vtc-trust">
+          <div className="vtc-trust" data-reveal-group>
             {trustItems.map((item) => {
               const Icon = item.icon;
               return (
-                <article key={item.title}>
+                <article key={item.title} data-reveal-item>
                   <Icon size={22} />
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
@@ -46,9 +48,9 @@ export default function Harmony() {
           </div>
         </div>
 
-        <div className="vtc-faq__items">
+        <div className="vtc-faq__items" data-reveal-group>
           {FAQ_ITEMS.map((item) => (
-            <details key={item.question}>
+            <details key={item.question} data-reveal-item>
               <summary>{item.question}</summary>
               <p>{item.answer}</p>
             </details>

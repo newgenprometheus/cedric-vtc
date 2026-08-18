@@ -16,6 +16,9 @@ export const ASSETS = {
   hero: "/media/vtc/tesla-capitole-toulouse-nuit.webp",
   blagnac: "/media/vtc/tesla-blagnac-nuit.webp",
   interior: "/media/vtc/tesla-interieur-toulouse-nuit.webp",
+  soiree: "/media/vtc/tesla-soiree-toulouse-nuit.webp",
+  matabiau: "/media/vtc/tesla-matabiau-toulouse-nuit.webp",
+  longueDistance: "/media/vtc/tesla-longue-distance-nuit.webp",
 } as const;
 
 export const NAV_ITEMS = [
@@ -51,7 +54,7 @@ export const SERVICE_ITEMS = [
     title: "Gare Matabiau",
     eyebrow: "Trains & correspondances",
     text: "Accueil coordonné autour des quais, horaires suivis et trajet vers hôtel, rendez-vous ou domicile.",
-    image: ASSETS.hero,
+    image: ASSETS.matabiau,
   },
   {
     title: "Business",
@@ -63,13 +66,13 @@ export const SERVICE_ITEMS = [
     title: "Soirée",
     eyebrow: "Centre-ville",
     text: "Restaurants, hôtels, événements, retours tardifs et trajets planifiés pour vos proches.",
-    image: ASSETS.hero,
+    image: ASSETS.soiree,
   },
   {
     title: "Longue distance",
     eyebrow: "Sur devis",
     text: "Courses depuis Toulouse et sa région vers vos destinations prioritaires, avec organisation en amont.",
-    image: ASSETS.blagnac,
+    image: ASSETS.longueDistance,
   },
 ] as const;
 

@@ -96,6 +96,28 @@
 - Contact réel non confirmé : réservation par formulaire/email, aucun faux numéro.
 - URL locale : port 3002 (3000 occupé). Prod : vtc-sigma.vercel.app.
 
+## Passe « mine Aircenter » (06/07 — commit 19dbc6d, non poussé)
+- [x] Dissection `aircenter_space.html` + CSS global/landing (fetch live) +
+      bundle shared.js — catalogue complet des interactions extrait
+- [x] **Curseur galerie** : chip ‹ › champagne sur le média services (moitié
+      gauche/droite), clic = prev/next, curseur natif masqué sur la zone
+- [x] **Clip vertical GSAP** sur le changement d'image services
+      (`imageClipInVertical`, frames empilées préchargées — fusionne
+      l'approche layers d'id-a2), tabs + clic média passent par `goTo`
+- [x] **Arrow-roll** sur tous les CTA (`btn--rotation` enfin défini ; variantes
+      `--roll-down`/`--roll-left` selon l'icône), keyframes 1 seul SVG
+- [x] **Burger 2 traits** : pincement au hover (façon `icon-menu`), croix à
+      l'ouverture, rotate 90° au hover ouvert — remplace lucide Menu/X
+- [x] **Préloader** : barre de progression champagne 2 px synchronisée +
+      **header top-in** après la levée du rideau
+- [x] **link-underline inversé** (souligné champagne au repos → disparaît au
+      hover) sur actions menu + liens footer
+- [x] Hovers gatés `@media (hover: hover)` ; reduced-motion : swap sec via
+      z-index, zéro animation
+- [x] QA : lint + build verts, harnais 4 passes (0 erreur console, 0 overflow),
+      sonde interactive — préloader/header/burger/chip/clip/roll vérifiés à l'écran
+- [ ] Push + deploy — sur « go »
+
 ## Suivis hors passe
 - [ ] Photos additionnelles (soirée/centre-ville) à shooter ou générer — pour
       dé-doublonner Services (3 photos pour 5 services : Matabiau et Soirée
